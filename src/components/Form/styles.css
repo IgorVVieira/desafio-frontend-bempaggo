@@ -1,0 +1,11 @@
+.form-label {
+    margin-bottom: 0.5rem;
+}
+
+.text-strong {
+    font-weight: bold;
+}
+
+#observacoes {
+    background-color: #dcdcdc;
+}

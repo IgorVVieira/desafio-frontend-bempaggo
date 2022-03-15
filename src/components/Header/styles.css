@@ -1,0 +1,19 @@
+#navbar {
+    background-color: blueviolet;
+    border-bottom-left-radius: 100%;
+    border-bottom-right-radius: 100%;
+}
+
+img {
+    width: 15rem;
+    margin-left: 15rem;
+    margin-top: -1rem;
+}
+
+.title {
+    color: azure;
+}
+
+.strong {
+    font-weight: bold;
+}
