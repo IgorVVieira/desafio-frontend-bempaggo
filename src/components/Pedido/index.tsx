@@ -1,3 +1,8 @@
+import { useState, useEffect } from "react";
+import { Card } from 'react-bootstrap';
+
+import './styles.css';
+
 type PedidoProps = {
     react?: string;
     vue?: string;
@@ -7,13 +12,28 @@ type PedidoProps = {
 }
 
 export function Pedido(props: PedidoProps) {
-    <>
-        <div>
-            <h2>React: {props.react}</h2>
-            <h2>Vue: {props.vue}</h2>
-            <h2>Angular: {props.angular}</h2>
-            <h2>Quantidade: {props.quantidade}</h2>
-            <h2>Observações: {props.observacoes}</h2>
-        </div>
-    </>
+    const [pedidos, setPedidos] = useState<PedidoProps>();
+
+    useEffect(() => {
+        function fetchData() {
+            setPedidos(props);
+            console.log(pedidos)
+        }
+        fetchData();
+    }, []);
+    return (
+        <Card border="primary" className="card-pedido">
+            <Card.Header>Pedido</Card.Header>
+            <Card.Body>
+                <Card.Title>Informações do pedido</Card.Title>
+                <Card.Text>
+                    <p><strong>React: {props.react}</strong></p>
+                    <p><strong>Vue: {props.vue}</strong></p>
+                    <p><strong>Angular: {props.angular}</strong></p>
+                    <p><strong>Quantidade: {props.quantidade}</strong></p>
+                    <p><strong>Observações: {props.observacoes}</strong></p>
+                </Card.Text>
+            </Card.Body>
+        </Card>
+    );
 }

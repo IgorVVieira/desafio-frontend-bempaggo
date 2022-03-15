@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Form as FormBootstrap, Button, Container, Row, Col } from 'react-bootstrap';
+import { Pedido } from '../Pedido';
 
 import './styles.css';
 
@@ -10,7 +11,7 @@ export function Form() {
     const [quantidade, setQuntidade] = useState('');
     const [observacoes, setObservacoes] = useState('');
 
-    const [pedidos, setPedidos] = useState<object>([]);
+    const [pedidos, setPedidos] = useState<object[]>([]);
 
     async function handleRegister(e) {
         e.preventDefault();
@@ -23,8 +24,7 @@ export function Form() {
             'observacoes': observacoes,
         };
 
-        setPedidos(novoPedido);
-        console.log(pedidos);
+        setPedidos([...pedidos, novoPedido]);
     }
 
     return (
@@ -51,7 +51,7 @@ export function Form() {
                         <FormBootstrap.Group>
                             <FormBootstrap.Label htmlFor='quantidade' className='text-strong'>Quantos adesivos de cada?</FormBootstrap.Label>
                             <FormBootstrap.Control type='number' name='quantidade' id='quantidade' value={quantidade}
-                            onChange={(e) => setQuntidade(e.target.value)} 
+                                onChange={(e) => setQuntidade(e.target.value)}
                             />
                         </FormBootstrap.Group>
 
@@ -66,6 +66,14 @@ export function Form() {
                         </FormBootstrap.Group>
                     </FormBootstrap>
                 </Col>
+            </Row>
+
+            <Row>
+                {pedidos.map(pedido => {
+                    return <Col xs md lg="3" className='m-3'>
+                        <Pedido {...pedido} />
+                    </Col>
+                })}
             </Row>
         </Container>
     );
