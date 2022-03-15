@@ -1,4 +1,4 @@
-import Package from '../../../public/images/package.png';
+import packageImg from '../../../public/images/package.png';
 
 import { Container, Row, Col, Navbar } from 'react-bootstrap';
 
@@ -14,7 +14,7 @@ export function Header() {
                         <h1 className='title'>para compra de</h1>
                         <h1 className='title strong'>Pacote de adesivos</h1></Col>
                     <Col xs md lg="6">
-                        <img src={Package} alt="Pacakage" />
+                        <img src={packageImg} alt="Pacakage" />
                     </Col>
                 </Row>
             </Container>

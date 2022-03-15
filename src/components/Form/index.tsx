@@ -50,14 +50,14 @@ export function Form() {
 
                         <FormBootstrap.Group>
                             <FormBootstrap.Label htmlFor='quantidade' className='text-strong'>Quantos adesivos de cada?</FormBootstrap.Label>
-                            <FormBootstrap.Control type='number' name='quantidade' id='quantidade' value={quantidade}
+                            <FormBootstrap.Control type='number' name='quantidade' id='quantidade' value={quantidade} required
                                 onChange={(e) => setQuntidade(e.target.value)}
                             />
                         </FormBootstrap.Group>
 
                         <FormBootstrap.Group>
                             <FormBootstrap.Label htmlFor='observacoes' className='text-strong'>Observações:</FormBootstrap.Label>
-                            <FormBootstrap.Control as='textarea' rows={5} placeholder='Alguma dúvida? Recado?' name='observacoes' id='observacoes' value={observacoes}
+                            <FormBootstrap.Control as='textarea' required rows={5} placeholder='Alguma dúvida? Recado?' name='observacoes' id='observacoes' value={observacoes}
                                 onChange={(e) => setObservacoes(e.target.value)} />
                         </FormBootstrap.Group>
 
@@ -70,8 +70,8 @@ export function Form() {
 
             <Row>
                 {pedidos.map(pedido => {
-                    return <Col xs md lg="3" className='m-3'>
-                        <Pedido {...pedido} />
+                    return <Col xs md lg="3" className='m-3' key={pedido}>
+                        <Pedido {...pedido}/>
                     </Col>
                 })}
             </Row>
