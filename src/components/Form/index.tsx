@@ -4,7 +4,11 @@ import { Pedido } from '../Pedido';
 
 import './styles.css';
 
-export function Form() {
+type PropsForm = {
+    onSubmit?: Function;
+}
+
+export function Form(props: PropsForm) {
     const [react, setReact] = useState(false);
     const [vue, setVue] = useState(false);
     const [angular, setAngular] = useState(false);
