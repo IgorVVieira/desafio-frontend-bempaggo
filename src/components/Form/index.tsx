@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Form as FormBootstrap, Button, Container, Row, Col } from 'react-bootstrap';
 import { Pedido } from '../Pedido';
 
@@ -13,18 +13,21 @@ export function Form() {
 
     const [pedidos, setPedidos] = useState<object[]>([]);
 
-    async function handleRegister(e) {
+    async function handleRegister(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+        try {
+            const novoPedido = {
+                'react': react,
+                'vue': vue,
+                'angular': angular,
+                'quantidade': quantidade,
+                'observacoes': observacoes,
+            };
 
-        const novoPedido = {
-            'react': react,
-            'vue': vue,
-            'angular': angular,
-            'quantidade': quantidade,
-            'observacoes': observacoes,
-        };
-
-        setPedidos([...pedidos, novoPedido]);
+            setPedidos([...pedidos, novoPedido]);
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     return (
@@ -61,7 +64,7 @@ export function Form() {
                                 onChange={(e) => setObservacoes(e.target.value)} />
                         </FormBootstrap.Group>
 
-                        <FormBootstrap.Group controlId='formButton'>
+                        <FormBootstrap.Group controlId='formButton' className='mt-3'>
                             <Button type="submit">Enviar</Button>
                         </FormBootstrap.Group>
                     </FormBootstrap>
@@ -71,7 +74,7 @@ export function Form() {
             <Row>
                 {pedidos.map(pedido => {
                     return <Col xs md lg="3" className='m-3' key={pedido}>
-                        <Pedido {...pedido}/>
+                        <Pedido {...pedido} />
                     </Col>
                 })}
             </Row>
