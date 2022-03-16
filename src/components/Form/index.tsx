@@ -72,8 +72,8 @@ export function Form() {
             </Row>
 
             <Row>
-                {pedidos.map(pedido => {
-                    return <Col xs md lg="3" className='m-3' key={pedido}>
+                {pedidos.map((pedido, index) => {
+                    return <Col xs md lg="3" className='m-3' key={index}>
                         <Pedido {...pedido} />
                     </Col>
                 })}
