@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
 import { Form as FormBootstrap, Button, Container, Row, Col } from 'react-bootstrap';
+
 import { Pedido } from '../Pedido';
 
 import './styles.css';
@@ -28,22 +30,28 @@ export function Form(props: PropsForm) {
                 'observacoes': observacoes,
             };
 
-            setPedidos([...pedidos, novoPedido]);
+            if (react || vue || angular) {
+                setPedidos([...pedidos, novoPedido]);
 
-            if (props.onSubmit) {
-                props.onSubmit({
-                    quantidade,
-                    observacoes,
-                });
+                if (props.onSubmit) {
+                    props.onSubmit({
+                        quantidade,
+                        observacoes,
+                    });
+                }
+
+                toast.success('Pedido cadastrado com sucesso!');
+            } else {
+                toast.error('Por favor, preencha ao menos um adesivo para realizar o pedido!');
             }
         } catch (error) {
-            console.log(error);
+            toast.error('Houve um erro ao realizar o pedido, tente novamete.');
         }
     }
 
     return (
         <Container>
-            <Row>
+            <Row className='justify-content-md-center'>
                 <Col xs md lg="6">
                     <FormBootstrap onSubmit={handleRegister}>
                         <p className='text-strong'>Quais adesivos:</p>
