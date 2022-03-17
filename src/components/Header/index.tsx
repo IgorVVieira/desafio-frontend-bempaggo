@@ -1,6 +1,7 @@
-import packageImg from '../../../public/images/package.png';
-
+import React from 'react';
 import { Container, Row, Col, Navbar } from 'react-bootstrap';
+
+import packageImg from '/images/package.png';
 
 import './styles.css';
 

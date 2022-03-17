@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Form as FormBootstrap, Button, Container, Row, Col } from 'react-bootstrap';
 import { Pedido } from '../Pedido';
 
@@ -29,6 +29,13 @@ export function Form(props: PropsForm) {
             };
 
             setPedidos([...pedidos, novoPedido]);
+
+            if (props.onSubmit) {
+                props.onSubmit({
+                    quantidade,
+                    observacoes,
+                });
+            }
         } catch (error) {
             console.log(error);
         }
