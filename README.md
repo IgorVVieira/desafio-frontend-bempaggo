@@ -10,7 +10,6 @@ Desafio frontend, feito em React.js e utilizando Typescript.
 * TESTS
 - > npm run test
 
-
 ## Produção
 * O desafio também se encontra hospedado na  Netlify na seguinte URL: [Desafio-frontend-bempaggo](https://desafio-frontend-bempaggo.netlify.app/).
 
